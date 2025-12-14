@@ -1,0 +1,189 @@
+/* =====================================================
+   1. SETUP & DESIGN TOKENS
+   ===================================================== */
+
+:root {
+  /* Colors */
+  --color-bg-page: #e7eaee;
+  --color-bg-card-light: #ffffff;
+  --color-bg-card-purple: #7541c8;
+  --color-bg-card-grey: #48556a;
+  --color-bg-card-dark: #19212e;
+
+  --color-text-primary: #19212e;
+  --color-text-inverse: #ffffff;
+
+  /* Spacing scale */
+  --space-2xs: 0.25rem;
+  --space-xs: 0.5rem;
+  --space-sm: 0.75rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 3rem;
+
+  /* Radius & Shadow */
+  --radius-md: 0.5rem;
+  --shadow-card: 0 1.5rem 3rem rgba(0, 0, 0, 0.15);
+}
+
+/* =====================================================
+   2. RESET
+   ===================================================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+/* =====================================================
+   3. BASE
+   ===================================================== */
+
+body {
+  font-family: "Barlow Semi Condensed", sans-serif;
+  background-color: var(--color-bg-page);
+  color: var(--color-text-primary);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* =====================================================
+   4. GRID LAYOUT (US-1)
+   ===================================================== */
+
+.grid__container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-lg);
+  padding: var(--space-xl);
+  width: min(100%, 85rem);
+}
+
+/* =====================================================
+   5. CARD COMPONENT (US-3)
+   ===================================================== */
+
+.grid__item {
+  border-radius: var(--radius-md);
+  padding: var(--space-xl);
+  box-shadow: var(--shadow-card);
+}
+
+.grid__item--1,
+.grid__item--2,
+.grid__item--4 {
+  color: var(--color-text-inverse);
+}
+
+.grid__item--1 {
+  background-color: var(--color-bg-card-purple);
+}
+
+.grid__item--2 {
+  background-color: var(--color-bg-card-grey);
+}
+
+.grid__item--3,
+.grid__item--5 {
+  background-color: var(--color-bg-card-light);
+}
+
+.grid__item--4 {
+  background-color: var(--color-bg-card-dark);
+}
+
+/* =====================================================
+   6. PROFILE
+   ===================================================== */
+
+.user__profile {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.user__profile img {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+}
+
+.user__bio {
+  font-size: clamp(0.75rem, 1vw, 0.875rem);
+  opacity: 0.8;
+}
+
+/* =====================================================
+   7. TESTIMONY TEXT
+   ===================================================== */
+.user__testimony--top {
+  margin-block: var(--space-md);
+  font-size: clamp(1.25rem, 2vw, 1.5rem);
+  font-weight: 600;
+}
+
+.user__testimony--bottom {
+  line-height: 1.2;
+  opacity: 0.75;
+}
+
+/* =====================================================
+   8. DESKTOP GRID (US-2)
+   ===================================================== */
+
+@media (min-width: 75em) {
+  .grid__container {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+.grid__item {
+  position: relative;
+}
+
+  
+  .grid__item--1 {
+    grid-column: 1 / 3;
+  }
+
+  .grid__item--2 {
+    grid-column: 3 / 4;
+  }
+
+  .grid__item--3 {
+    grid-column: 1 / 2;
+  }
+
+  .grid__item--4 {
+    grid-column: 2 / 4;
+  }
+
+  .grid__item--5 {
+    grid-column: 4 / 5;
+    grid-row: 1 / 3;
+  }
+
+  .grid__item--1::before {
+  content: "";
+  position: absolute;
+  bottom: calc(var(--space-xl) * 7.25);
+  right: calc(var(--space-xl) * 2);
+  width: 7rem;
+  aspect-ratio: 1;
+  background: url("bg-pattern-quotation.svg")
+    no-repeat center / contain;
+  opacity: 0.4;
+
+}
+
+
+}
